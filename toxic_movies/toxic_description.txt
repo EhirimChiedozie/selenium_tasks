@@ -1,5 +1,8 @@
-This project scrapes the url `https://toxicwap.com`, gets all the movie series that starts with the letter N and
+This project scrapes the url `https://toxicwap.com`, gets all the movies and movie series and
 stores them in a text file.
 
-NOTE: toxic_movies.py contains the code and
-        toxic_movies.txt contains the names of the movies
+NOTE: toxicNseries.py file is where the code for extracting movies that begin with the letter N is written
+        and toxicNseries.txt is where the movies are stored.
+
+Similarly:  all_toxic_movies.py is where the code for extracting movies  is written
+        and all_toxic_movies.txt is where the movies are stored.
